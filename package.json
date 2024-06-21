@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "scripts": {
+    "serverless": "serverless"
+  },
+  "dependencies": {
+    "serverless": "^3.36.0"
+  }
+}

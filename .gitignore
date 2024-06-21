@@ -1,0 +1,17 @@
+# Python
+*.py[co]
+
+# Testing
+.coverage
+.pytest_cache
+.tox
+htmlcov
+/reports/
+
+# NodeJS
+/node_modules
+npm-debug.log
+npm-debug.log.*
+
+# Serverless
+.serverless

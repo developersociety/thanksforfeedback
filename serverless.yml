@@ -1,0 +1,28 @@
+service: thanksforfeedback
+
+provider:
+  name: aws
+  architecture: arm64
+  deploymentMethod: direct
+  memorySize: 128
+  timeout: 30
+  stage: ${opt:stage, "production"}
+  region: eu-west-2
+  logRetentionInDays: 30
+  apiGateway:
+    description: "Thanks for the Feedback"
+  environment:
+    SENTRY_DSN: ${ssm:/serverless/${self:service}-${sls:stage}/SENTRY_DSN, ""}
+    # EXAMPLE_API_KEY: ${ssm:/serverless/${self:service}-${sls:stage}/EXAMPLE_API_KEY}
+
+resources:
+  Description: "Thanks for the Feedback"
+
+functions:
+  app:
+    description: "Thanks for the Feedback - app"
+    events:
+      - http: ANY /
+      - http: 'ANY /{proxy+}'
+    image:
+      uri: 253670703218.dkr.ecr.eu-west-2.amazonaws.com/${self:service}-${sls:stage}:latest

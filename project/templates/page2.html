@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="container">
+    <form method="POST">
+      <input type="hidden" name="site_id" value="{{ site_id }}">
+      <input type="hidden" name="question" value="{{ question }}">
+      <input type="hidden" name="radio_value" value="{{ radio_value }}">
+      <div class="feedback">
+        <label for="feedback">Is there anything else we should know?</label>
+        <textarea maxlength="30000" name="feedback" id="feedback"></textarea>
+      </div>
+      <button class="button" type="submit">Send</button>
+    </form>
+  </div>
+{% endblock %}
