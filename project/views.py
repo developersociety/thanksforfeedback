@@ -11,7 +11,7 @@ from . import app
 
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
 credentials = ServiceAccountCredentials.from_json_keyfile_dict(
-    json.loads(base64.b64decode(os.environ["GOOGLE_SERVICE_CREDENTIALS"])), scope
+    json.loads(base64.b64decode(os.environ["/serverless/thanksforfeedback-production/GOOGLE_SHEETS_CREDENTIALS"])), scope
 )
 client = gspread.authorize(credentials)
 sheet = client.open("DLCA Feedback").sheet1
