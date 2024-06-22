@@ -9,14 +9,12 @@ from oauth2client.service_account import ServiceAccountCredentials
 
 from . import app
 
-encoded_credentials = os.environ.get("GOOGLE_SHEETS_CREDENTIALS")
-if not encoded_credentials:
-    raise ValueError("No Google Sheets credentials found in environment variables.")
-credentials_json = base64.b64decode(encoded_credentials).decode()
-credentials = json.loads(credentials_json)
+
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-creds = ServiceAccountCredentials.from_json_keyfile_dict(credentials, scope)
-client = gspread.authorize(creds)
+credentials = ServiceAccountCredentials.from_json_keyfile_dict(
+        json.loads(base64.b64decode(os.environ["GOOGLE_SERVICE_CREDENTIALS"])), scope
+    )
+client = gspread.authorize(credentials)
 sheet = client.open("DLCA Feedback").sheet1
 
 
