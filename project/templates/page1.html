@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
   <div class="container">
-    <h1 class="question">How satisfied are you with your visit today?</h1>
+    <h1 class="question">{{ question }}</h1>
     <div class="emojis">
         <form method="POST" class="emoji">
-          <input type="hidden" name="site_id" value="123" />
-          <input type="hidden" name="question" value="What is your favorite color?" />
+          <input type="hidden" name="site_id" value="{{ site_id }}">
+          <input type="hidden" name="question" value="{{ question }}">
           <input type="hidden" name="radio_value" value="very-satisfied" />
           <button type="submit">
             <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2" viewBox="0 0 468 468">
@@ -17,8 +17,8 @@
         </form>
 
         <form method="POST" class="emoji">
-          <input type="hidden" name="site_id" value="123" />
-          <input type="hidden" name="question" value="What is your favorite color?" />
+          <input type="hidden" name="site_id" value="{{ site_id }}">
+          <input type="hidden" name="question" value="{{ question }}">
           <input type="hidden" name="radio_value" value="satisfied" />
           <button type="submit">
             <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2" viewBox="0 0 463 463">
@@ -31,8 +31,8 @@
         </form>
 
         <form method="POST" class="emoji">
-          <input type="hidden" name="site_id" value="123" />
-          <input type="hidden" name="question" value="What is your favorite color?" />
+          <input type="hidden" name="site_id" value="{{ site_id }}">
+          <input type="hidden" name="question" value="{{ question }}">
           <input type="hidden" name="radio_value" value="neutral" />
           <button type="submit">
           <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2" viewBox="0 0 448 448">
@@ -44,8 +44,8 @@
       </form>
 
       <form method="POST" class="emoji">
-        <input type="hidden" name="site_id" value="123" />
-        <input type="hidden" name="question" value="What is your favorite color?" />
+        <input type="hidden" name="site_id" value="{{ site_id }}">
+        <input type="hidden" name="question" value="{{ question }}">
         <input type="hidden" name="radio_value" value="dissatisfied" />
         <button type="submit">
           <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2" viewBox="0 0 474 474">
