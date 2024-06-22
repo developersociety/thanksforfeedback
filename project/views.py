@@ -1,5 +1,7 @@
+import base64
 import datetime
 import json
+import os
 
 import gspread
 from flask import redirect, render_template, request, url_for
@@ -7,10 +9,10 @@ from oauth2client.service_account import ServiceAccountCredentials
 
 from . import app
 
-
-credentials_json = os.environ.get("GOOGLE_SHEETS_CREDENTIALS")
-if not credentials_json:
+encoded_credentials = os.environ.get("GOOGLE_SHEETS_CREDENTIALS")
+if not encoded_credentials:
     raise ValueError("No Google Sheets credentials found in environment variables.")
+credentials_json = base64.b64decode(encoded_credentials).decode()
 credentials = json.loads(credentials_json)
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
 creds = ServiceAccountCredentials.from_json_keyfile_dict(credentials, scope)
@@ -35,6 +37,8 @@ def log_interaction(data):
 
 @app.route("/", methods=["GET", "POST"])
 def page1():
+    site_id = request.args.get("site_id", "default_site_id")
+    question = request.args.get("question", "default_question")
     if request.method == "POST":
         site_id = request.form.get("site_id")
         question = request.form.get("question")
@@ -45,7 +49,7 @@ def page1():
         return redirect(
             url_for("page2", site_id=site_id, question=question, radio_value=radio_value)
         )
-    return render_template("page1.html")
+    return render_template("page1.html", site_id=site_id, question=question)
 
 
 @app.route("/page2", methods=["GET", "POST"])
