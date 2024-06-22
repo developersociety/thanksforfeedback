@@ -13,7 +13,7 @@ provider:
     description: "Thanks for the Feedback"
   environment:
     SENTRY_DSN: ${ssm:/serverless/${self:service}-${sls:stage}/SENTRY_DSN, ""}
-    # EXAMPLE_API_KEY: ${ssm:/serverless/${self:service}-${sls:stage}/EXAMPLE_API_KEY}
+    GOOGLE_SHEETS_CREDENTIALS: ${ssm:/serverless/${self:service}-${sls:stage}/GOOGLE_SHEETS_CREDENTIALS}
 
 resources:
   Description: "Thanks for the Feedback"
