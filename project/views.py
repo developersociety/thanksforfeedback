@@ -34,8 +34,8 @@ def log_interaction(data):
 
 @app.route("/", methods=["GET", "POST"])
 def page1():
-    site_id = request.args.get("site_id", "default_site_id")
-    question = request.args.get("question", "default_question")
+    site_id = request.args.get("site_id", "DLCA_Default")
+    question = request.args.get("question", "How do you feel about your visit?")
     if request.method == "POST":
         site_id = request.form.get("site_id")
         question = request.form.get("question")
